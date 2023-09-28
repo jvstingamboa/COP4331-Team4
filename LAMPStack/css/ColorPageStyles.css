@@ -1,0 +1,24 @@
+body 
+{
+    background: black center/cover url("../images/ColorHomePageBackground.jpg") no-repeat;
+    height: 100vh;
+}
+
+.controlBox
+{
+    width: 450px;
+    height:450px;
+    margin:auto;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+  
+   background-color: #000000;
+   box-shadow: 5px 10px 20px rgba(0,0,0,0.6);
+   border-radius: 20px; 
+   color:white;
+    
+}
+
+
+
+
+

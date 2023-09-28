@@ -1,0 +1,36 @@
+body 
+{
+    background: black center/cover url("../images/SignUpBackground.jpg") no-repeat;
+    height: 100vh;
+}
+
+.SignUpBox
+{
+    width: 450px;
+    height:450px;
+    margin:auto;
+  
+   background-color: #000000;
+   box-shadow: 5px 10px 20px rgba(0,0,0,0.6);
+   border-radius: 20px; 
+   color:white;
+   font-family: Georgia, 'Times New Roman', Times, serif;
+    
+}
+
+#title{
+    padding-top: 40px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+#createAccount{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+#logo{
+    filter: drop-shadow(5px 5px 5px #555);
+}
+
+    
+
+
