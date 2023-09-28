@@ -1,4 +1,4 @@
-const urlBase = 'http://COP4331-5.com/LAMPAPI';
+const urlBase = 'http://142.93.186.91/LAMPAPI';
 const extension = 'php';
 
 let userId = 0;
@@ -11,8 +11,10 @@ function doLogin()
 	firstName = "";
 	lastName = "";
 	
-	let login = document.getElementById("loginName").value;
+	let login = document.getElementById("emailAddress").value;
 	let password = document.getElementById("loginPassword").value;
+
+	// remember = document.getElementById("checkbox").
 //	var hash = md5( password );
 	
 	document.getElementById("loginResult").innerHTML = "";
@@ -24,8 +26,10 @@ function doLogin()
 	let url = urlBase + '/Login.' + extension;
 
 	let xhr = new XMLHttpRequest();
-	xhr.open("POST", url, true);
+	//xhr.open("POST", url, true);
+	xhr.open("POST", "http://142.93.186.91/LAMPAPI/Login.php", true);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	
 	try
 	{
 		xhr.onreadystatechange = function() 
@@ -45,7 +49,7 @@ function doLogin()
 				lastName = jsonObject.lastName;
 
 				saveCookie();
-	
+
 				window.location.href = "color.html";
 			}
 		};
@@ -56,6 +60,175 @@ function doLogin()
 		document.getElementById("loginResult").innerHTML = err.message;
 	}
 
+}
+
+function doSignUp()
+{
+	userId = 0;
+	username = "";
+	firstName ="";
+	lastName="";
+
+	firstName = document.getElementById("firstName").value;
+	lastName = document.getElementById("lastName").value;
+	let login = document.getElementById("userName").value;
+	let password = document.getElementById("loginPassword").value;
+
+	if(login == "" || password == "" || firstName == "" || lastName == "")
+	{
+		document.getElementById("signupResult").innerHTML ="Fill in all SignUp information";
+		return;
+	}
+	
+	// remember = document.getElementById("checkbox").
+//	var hash = md5( password );
+	
+	//document.getElementById("loginResult").innerHTML = "";
+
+	//let tmp = {login:login,password:password};
+	let tmp = {login:login, password:password, firstName:firstName, lastName:lastName};//new edit
+//	var tmp = {login:login,password:hash, firstName:firstName, lastName:lastName};
+	let jsonPayload = JSON.stringify( tmp );
+	
+	let url = urlBase + '/SignUp.' + extension; //edited
+
+	let xhr = new XMLHttpRequest();
+	//xhr.open("POST", url, true);
+	xhr.open("POST", "http://142.93.186.91/LAMPAPI/SignUp.php", true); //url = "http://142.93.186.91/LAMPAPI/SignUp.php"
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	
+	try
+	{
+		xhr.onreadystatechange = function() 
+		{
+			//console.log("readystatechangetest");
+			if (this.readyState == 4 && this.status == 200) 
+			{
+				console.log("readystate == 4 && status == 200 success");
+				let jsonObject = JSON.parse(xhr.responseText);
+				userId = jsonObject.id;
+				console.log("json id test");
+		
+				if( userId > 1 )// changed to greater than 1
+				{		
+					console.log("userId test success");
+					document.getElementById("signupResult").innerHTML = "Username already taken";
+					//return;
+				}
+				else{
+					document.getElementById("signupResult").innerHTML = "Succesfully created account Userid = " + userId;
+					//window.location.href = "/index.html"; //commented for testing
+				}
+		
+				//commented code is remains from doLogin()
+				firstName = jsonObject.firstName;
+				lastName = jsonObject.lastName;
+				// login = jsonObject.login;
+				// password = jsonObject.password;
+
+				// saveCookie();
+
+			}
+		};
+		xhr.send(jsonPayload);
+	}
+	catch(err)
+	{
+		document.getElementById("signupResult").innerHTML = err.message;
+	}
+}
+//NEW: Delete User function (needS testing)
+function deleteUser()
+{
+	let login = document.getElementById("deleteUsername").value;
+	let userId = document.getElementById("deleteId").value;
+	
+	let tmp ={login:login, userId:userId};
+
+	let jsonPayload = JSON.stringify( tmp );
+
+	let xhr = new XMLHttpRequest();
+	//xhr.open("POST", url, true);
+	xhr.open("POST", "http://142.93.186.91/LAMPAPI/DeleteUser.php", true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+
+	try
+	{
+		xhr.onreadystatechange = function() 
+		{
+			if (this.readyState == 4 && this.status == 200) 
+			{
+				let jsonObject = JSON.parse(xhr.responseText);
+				let boolean = jsonObject.result;
+				//userId = jsonObject.id;
+		
+				if( boolean == true)
+				{		
+					document.getElementById("deleteResult").innerHTML = "User was successfully Deleted!";
+					return;
+				}
+
+				else
+				{
+					document.getElementById("deleteResult").innerHTML = "No user with these credentials exist";
+				}
+
+			}
+		};
+		xhr.send(jsonPayload);
+	}
+	catch(err)
+	{
+		document.getElementById("deleteResult").innerHTML = err.message;
+	}
+}
+
+//Not finished
+function addContact()
+{
+	let login = document.getElementById("deleteUsername").value;
+	let userId = document.getElementById("deleteId").value;
+	
+	let tmp ={login:login, userId:userId};
+
+	let jsonPayload = JSON.stringify( tmp );
+
+	let xhr = new XMLHttpRequest();
+	//xhr.open("POST", url, true);
+	xhr.open("POST", "http://142.93.186.91/LAMPAPI/DeleteUser.php", true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+
+}
+//Not finished
+function updateContact()
+{
+	let login = document.getElementById("deleteUsername").value;
+	let userId = document.getElementById("deleteId").value;
+	
+	let tmp ={login:login, userId:userId};
+
+	let jsonPayload = JSON.stringify( tmp );
+
+	let xhr = new XMLHttpRequest();
+	//xhr.open("POST", url, true);
+	xhr.open("POST", "http://142.93.186.91/LAMPAPI/DeleteUser.php", true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+
+}
+//Not finished
+function searchContact()
+{
+	let login = document.getElementById("deleteUsername").value;
+	let userId = document.getElementById("deleteId").value;
+	
+	let tmp ={login:login, userId:userId};
+
+	let jsonPayload = JSON.stringify( tmp );
+
+	let xhr = new XMLHttpRequest();
+	//xhr.open("POST", url, true);
+	xhr.open("POST", "http://142.93.186.91/LAMPAPI/DeleteUser.php", true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 }
 
 function saveCookie()
@@ -105,7 +278,7 @@ function doLogout()
 	firstName = "";
 	lastName = "";
 	document.cookie = "firstName= ; expires = Thu, 01 Jan 1970 00:00:00 GMT";
-	window.location.href = "index.html";
+	window.location.href = "/index.html";
 }
 
 function addColor()
@@ -181,5 +354,10 @@ function searchColor()
 	{
 		document.getElementById("colorSearchResult").innerHTML = err.message;
 	}
+	
+}
+
+function deleteColor()
+{
 	
 }
