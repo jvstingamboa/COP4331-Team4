@@ -1,0 +1,44 @@
+body 
+{
+    background: black center/cover url("../images/BeachBackground.jpg") no-repeat;
+    height: 100vh;
+}
+
+.LoginBox
+{
+    width: 350px;
+    height:400px;
+    margin:auto;
+  
+   background-color:black;
+   box-shadow: 5px 10px 20px rgba(0,0,0,0.6);
+   border-radius: 20px;  
+   color:white;
+}
+
+#title{
+    padding-top: 10px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+#loginButton{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: white;
+}
+#loginButton:hover{
+    color: white;
+}
+
+#loginButton:visited{
+    color: none;
+}
+
+#checkbox{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+#logo{
+    filter: drop-shadow(5px 5px 5px #555);
+}
+
+

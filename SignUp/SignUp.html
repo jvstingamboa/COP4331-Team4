@@ -1,50 +1,56 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Beach Club Login</title>
-    <link href="css/styles.css" rel="stylesheet">
+    <title>Bootstrap demo</title>
+    <link href="../css/SignUpStyles.css" rel="stylesheet">
+    <script type="text/javascript" src="../js/code.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script type="text/javascript" src="js/code.js"></script>
-    <title>Practice BootStrap Login Form</title>
+    <title> BootStrap Sign Up Form</title>
   </head>
 
   <body>
     <div class ="text-center">
-       <img class = "mt-4" id = "logo" src ="images/BeachLogo.png" height = "200" alt ="Pretty Beach Logo">
+       <img class = "mt-4" id="logo" src ="../images/BeachLogo.png" height = "200" alt ="Pretty Beach Logo">
     </div>
-    <div class ="LoginBox mt-5" id="Login Box">
-      <form style = "margin:auto; max-width:300px;">
-       
-        <h1 class="h3 mb-3 font-weight-normal" id = "title"><center>Please Log In</center></h1>
-        <i class="fa fa-user icon"></i>
-	      <input type="email" id="emailAddress" class = "form-control" placeholder= "Username" required autofocus>
-        <div class = "mt-2">
-          <i class="fa fa-lock icon"></i>
+
+    <div class ="SignUpBox mt-5" id="SignUpBox">
+      <span id="signupResult"></span>
+      <form style = "margin:auto; max-width:380px;">
+        
+        <h1 class="h3 mb-3 font-weight-normal" id = "title"><center>Please Sign Up</center></h1>
+
+        <!-- go back to sign in page-->
+        <a id ="backLink" href ="../index.html" class ="form__link">Go back</a>
+
+        <!--Sign Up input-->
+	      <input type="firstName" id="firstName" class = "form-control" placeholder="First Name" required autofocus>
+        
+        <div class ="mt-4">
+          <input type="lastName" id="lastName" class = "form-control" placeholder="Last Name" required autofocus>
+        </div>
+
+        <div class ="mt-4">
+          <!--Icon isn't working-->
+          <i class="fa fa-envelope icon"></i>
+          <input type="email" id="userName" class = "form-control" placeholder="Username" required autofocus>
+        </div>
+        
+        <div class = "mt-4">
           <input type="password" id="loginPassword" class="form-control" placeholder="Password" required autofocus>
         </div>
-	      
 
-        <div class = "checkbox mt-4">
-      <label>
-        <input type="checkbox" id="checkbox" value ="remember-me"> Remember me
-      </label>
-      
-    </div>
     <div class ="mt-4">
-       <button type="button" id="loginButton" class=" btn btn-lg btn-primary w-100" onclick="doLogin();">  Sign In <i class ="fa fa-sign-in"></i> </button>
+       <button type="button" id="createAccount" class=" btn btn-lg btn-primary w-100" onclick="doSignUp();"> Create an Account </button>
        <span id="loginResult"></span>
     </div>    
-	  
-    <p class = "form__text mt-2 mb-2">
-      <a id ="signUpLink" href ="SignUp/SignUp.html" class ="form__link">Don't have an account? Sign up here.</a>
-    </p>
-    
+	     
+
       </form>
       
     </div>
+    
     
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
